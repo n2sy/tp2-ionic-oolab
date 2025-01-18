@@ -35,5 +35,9 @@ export class GestionCourseService {
     return this.tabCourses;
   }
 
+  getCourseById(id: number) {
+    return this.tabCourses.find((element) => element.id == id);
+  }
+
   constructor() {}
 }
