@@ -31,6 +31,22 @@ export class GestionCourseService {
     },
   ];
 
+  addCourse(newCourse) {
+    newCourse.id = this.tabCourses[this.tabCourses.length - 1].id + 1;
+    newCourse.keywords = newCourse.keywords.trim().split(',');
+    this.tabCourses.push(newCourse);
+  }
+
+  deleteCourse(selectedId) {
+    // 1ère méthode
+    // let tab = this.tabCourses.filter((course) => course.id != selectedId);
+    // this.tabCourses = tab;
+
+    //2eme methode
+    let i = this.tabCourses.findIndex((course) => course.id == selectedId);
+    this.tabCourses.splice(i, 1);
+  }
+
   getAllCourses() {
     return this.tabCourses;
   }

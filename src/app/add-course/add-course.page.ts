@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GestionCourseService } from '../services/gestion-course.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-course',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class AddCoursePage implements OnInit {
-  constructor() {}
+  constructor(
+    private courseSer: GestionCourseService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
+
+  submitHandler(val) {
+    this.courseSer.addCourse(val);
+    this.router.navigateByUrl('/home');
+  }
 }
